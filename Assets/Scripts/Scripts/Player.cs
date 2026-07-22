@@ -1,20 +1,13 @@
-using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine;
 using TMPro;
 
-public class PlayerMovement : MonoBehaviour
+public class Player : MonoBehaviour
 {
-    private float horizontal;
-    private float speed = 8f;
-    private float jumpingPower = 16f;
-    private bool isFacingRight = true;
     public float combo;
     public float multiplier = 1;
 
-    [SerializeField] private Rigidbody2D rb;
-    [SerializeField] private Transform groundCheck;
-    [SerializeField] private LayerMask groundLayer;
     [SerializeField] TextMeshProUGUI combo_text;
     [SerializeField] TextMeshProUGUI multiplier_text;
     [SerializeField] Camera cam;
@@ -33,8 +26,6 @@ public class PlayerMovement : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
 
-
-
     void Update()
     {
         combo_text.text = "COMBO: " + combo.ToString();
@@ -45,8 +36,9 @@ public class PlayerMovement : MonoBehaviour
         PogoJump();
         RotatePlayer();
         Respawn();
+    }
 
-private void PogoJump() 
+    private void PogoJump() 
     {
         if (Input.GetKey(KeyCode.Space))
         {
@@ -146,44 +138,5 @@ private void PogoJump()
 
         pogoJoint.motor = motor;
         pogoJoint.limits = limits;
-    }
-}
-
-
-
-        horizontal = Input.GetAxisRaw("Horizontal");
-
-        if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, jumpingPower);
-        }
-
-        if (Input.GetButtonUp("Jump") && rb.linearVelocity.y > 0f)
-        {
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, rb.linearVelocity.y * 0.5f);
-        }
-
-        Flip();
-    }
-
-    private void FixedUpdate()
-    {
-        rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
-    }
-
-    private bool IsGrounded()
-    {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-    }
-
-    private void Flip()
-    {
-        if (isFacingRight && horizontal < 0f || !isFacingRight && horizontal > 0f)
-        {
-            isFacingRight = !isFacingRight;
-            Vector3 localScale = transform.localScale;
-            localScale.x *= -1f;
-            transform.localScale = localScale;
-        }
     }
 }
