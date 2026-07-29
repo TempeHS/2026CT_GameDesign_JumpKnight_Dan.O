@@ -32,7 +32,7 @@ public class JumpKingMovement : MonoBehaviour
         if (isGrounded && !isCharging)
         {
             float horizontal = Input.GetAxisRaw("Horizontal");
-            rb.velocity = new Vector2(horizontal * moveSpeed, rb.velocity.y);
+            rb.linearVelocity = new Vector2(horizontal * moveSpeed, rb.linearVelocity.y);
         }
 
         HandleJumpCharge();
@@ -65,7 +65,7 @@ public class JumpKingMovement : MonoBehaviour
             isCharging = false;
 
             // Apply jump force
-            rb.velocity = new Vector2(rb.velocity.x, chargeAmount);
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, chargeAmount);
 
             // No control in air
         }
