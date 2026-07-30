@@ -28,7 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // No movement while charging or airborne (Jump King rule)
+        
         if (!isCharging && IsGrounded())
         {
             rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
@@ -37,7 +37,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleChargeJump()
     {
-        // Start charging only if grounded
+        
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             isCharging = true;
@@ -84,15 +84,17 @@ public class PlayerMovement : MonoBehaviour
     {
         foreach (ContactPoint2D contact in collision.contacts)
         {
-            // Wall hit detection
-            if (Mathf.Abs(contact.normal.x) > 0.5f)
-            {
-                float pushDirection = -Mathf.Sign(contact.normal.x);
-                float pushForce = 3f;
+           
+            bool hitLeftSide = contact.point.x <= collision.collider.bounds.min.x + 0.05f;
+            bool hitRightSide = contact.point.x >= collision.collider.bounds.max.x - 0.05f;
 
-                // Bounce back
+            if (hitLeftSide || hitRightSide)
+            {
+                float pushDirection = hitLeftSide ? -1f : 1f;
+                float pushForce = 4f; // tune this value
+
                 rb.linearVelocity = new Vector2(pushDirection * pushForce, rb.linearVelocity.y);
-            }
-        }
-    }
+            }       
+        }   
+    }   
 }
