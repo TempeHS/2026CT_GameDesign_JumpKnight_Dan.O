@@ -10,9 +10,12 @@ public class PlayerMovement : MonoBehaviour
     private float maxJumpPower = 22f;
     private float chargeRate = 20f;
     private float currentCharge = 0f;
+    public float wallCheckDistance = 0.1f;
     private bool isCharging = false;
-
+    private bool isTouchingWall;
     private bool isFacingRight = true;
+
+    public LayerMask groundLayer;
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -24,6 +27,15 @@ public class PlayerMovement : MonoBehaviour
 
         HandleChargeJump();
         Flip();
+
+        isTouchingWall =
+    Physics2D.Raycast(transform.position, Vector2.right, wallCheckDistance, groundLayer) ||
+    Physics2D.Raycast(transform.position, Vector2.left, wallCheckDistance, groundLayer);
+
+if (isTouchingWall && Mathf.Abs(rb.velocity.x) > 0)
+{
+    rb.velocity = new Vector2(0, rb.velocity.y);
+}
     }
 
     private void FixedUpdate()
@@ -32,6 +44,12 @@ public class PlayerMovement : MonoBehaviour
         if (!isCharging && IsGrounded())
         {
             rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
+        }
+
+
+        if (isTouchingWall && Mathf.Abs(rb.linearVelocity.x) > 0)
+        {
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         }
     }
 
@@ -43,23 +61,23 @@ public class PlayerMovement : MonoBehaviour
             isCharging = true;
             currentCharge = minJumpPower;
 
-            // Stop sliding when charging begins
+            
             rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
         }
 
-        // Increase charge while holding
+        
         if (Input.GetKey(KeyCode.Space) && isCharging)
         {
             currentCharge += chargeRate * Time.deltaTime;
             currentCharge = Mathf.Clamp(currentCharge, minJumpPower, maxJumpPower);
         }
 
-        // Release jump
+        
         if (Input.GetKeyUp(KeyCode.Space) && isCharging)
         {
             isCharging = false;
 
-            // Launch upward with charged force
+            
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, currentCharge);
         }
     }
