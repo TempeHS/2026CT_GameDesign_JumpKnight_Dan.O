@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isTouchingWall;
     private bool isFacingRight = true;
 
-    public LayerMask groundLayer;
+    
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -32,9 +32,9 @@ public class PlayerMovement : MonoBehaviour
     Physics2D.Raycast(transform.position, Vector2.right, wallCheckDistance, groundLayer) ||
     Physics2D.Raycast(transform.position, Vector2.left, wallCheckDistance, groundLayer);
 
-if (isTouchingWall && Mathf.Abs(rb.velocity.x) > 0)
+if (isTouchingWall && Mathf.Abs(rb.linearVelocity.x) > 0)
 {
-    rb.velocity = new Vector2(0, rb.velocity.y);
+    rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
 }
     }
 

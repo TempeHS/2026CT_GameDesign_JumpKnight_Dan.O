@@ -3,7 +3,7 @@ using UnityEngine;
 public class CameraSnap : MonoBehaviour
 {
     public Transform player;
-    public float screenHeight = 10f;
+    public float screenHeight = 14f;
     public float snapSpeed = 10f;
     public float snapBuffer = 2f;
 
@@ -13,6 +13,8 @@ public class CameraSnap : MonoBehaviour
     {
         
         currentScreenY = Mathf.Round(player.position.y / screenHeight) * screenHeight;
+
+        Camera.main.orthographicSize = 6.5f;
     }
 
     void Update()
