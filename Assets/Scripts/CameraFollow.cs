@@ -3,7 +3,7 @@ using UnityEngine;
 public class CameraSnap : MonoBehaviour
 {
     public Transform player;
-    public float screenHeight = 14f;
+    public float screenHeight = 13f;
     public float snapSpeed = 10f;
     public float snapBuffer = 2f;
 
