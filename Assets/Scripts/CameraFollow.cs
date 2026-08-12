@@ -3,7 +3,7 @@ using UnityEngine;
 public class CameraSnap : MonoBehaviour
 {
     public Transform player;
-    public float screenHeight = 13f;
+    public float screenHeight = 13f;   // MUST match camera height (6.5 * 2)
     public float snapSpeed = 10f;
     public float snapBuffer = 2f;
 
@@ -14,14 +14,17 @@ public class CameraSnap : MonoBehaviour
         
         currentScreenY = Mathf.Round(player.position.y / screenHeight) * screenHeight;
 
-        Camera.main.orthographicSize = 6.5f;
+        
+        transform.position = new Vector3(
+            transform.position.x,
+            currentScreenY,
+            transform.position.z
+        );
     }
 
     void Update()
     {
         float playerY = player.position.y;
-
-        float screenBottom = currentScreenY;
         float screenTop = currentScreenY + screenHeight;
 
         
@@ -31,12 +34,12 @@ public class CameraSnap : MonoBehaviour
         }
 
         
-        if (playerY < screenBottom - snapBuffer)
-        {
-            currentScreenY -= screenHeight;
-        }
+        float targetY = currentScreenY;
 
-        Vector3 targetPos = new Vector3(transform.position.x, currentScreenY, transform.position.z);
-        transform.position = Vector3.Lerp(transform.position, targetPos, snapSpeed * Time.deltaTime);
+        transform.position = Vector3.Lerp(
+            transform.position,
+            new Vector3(transform.position.x, targetY, transform.position.z),
+            snapSpeed * Time.deltaTime
+        );
     }
 }
