@@ -10,12 +10,11 @@ public class PlayerMovement : MonoBehaviour
     private float maxJumpPower = 22f;
     private float chargeRate = 20f;
     private float currentCharge = 0f;
-    public float wallCheckDistance = 0.1f;
     private bool isCharging = false;
+
+    public float wallCheckDistance = 0.1f;
     private bool isTouchingWall;
     private bool isFacingRight = true;
-
-    
 
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
@@ -23,30 +22,30 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        // Horizontal input
         horizontal = Input.GetAxisRaw("Horizontal");
 
+        // Charge jump logic
         HandleChargeJump();
+
+        // Flip sprite
         Flip();
 
+        // Wall detection (NO physics here)
         isTouchingWall =
-    Physics2D.Raycast(transform.position, Vector2.right, wallCheckDistance, groundLayer) ||
-    Physics2D.Raycast(transform.position, Vector2.left, wallCheckDistance, groundLayer);
-
-if (isTouchingWall && Mathf.Abs(rb.linearVelocity.x) > 0)
-{
-    rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
-}
+            Physics2D.Raycast(transform.position, Vector2.right, wallCheckDistance, groundLayer) ||
+            Physics2D.Raycast(transform.position, Vector2.left, wallCheckDistance, groundLayer);
     }
 
     private void FixedUpdate()
     {
-        
+        // Normal movement only when grounded and not charging
         if (!isCharging && IsGrounded())
         {
             rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
         }
 
-
+        
         if (isTouchingWall && Mathf.Abs(rb.linearVelocity.x) > 0)
         {
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
@@ -72,12 +71,12 @@ if (isTouchingWall && Mathf.Abs(rb.linearVelocity.x) > 0)
             currentCharge = Mathf.Clamp(currentCharge, minJumpPower, maxJumpPower);
         }
 
-        
+        // Release jump
         if (Input.GetKeyUp(KeyCode.Space) && isCharging)
         {
             isCharging = false;
 
-            
+            // Apply jump force
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, currentCharge);
         }
     }
@@ -102,7 +101,6 @@ if (isTouchingWall && Mathf.Abs(rb.linearVelocity.x) > 0)
     {
         foreach (ContactPoint2D contact in collision.contacts)
         {
-           
             bool hitLeftSide = contact.point.x <= collision.collider.bounds.min.x + 0.05f;
             bool hitRightSide = contact.point.x >= collision.collider.bounds.max.x - 0.05f;
 
@@ -111,8 +109,9 @@ if (isTouchingWall && Mathf.Abs(rb.linearVelocity.x) > 0)
                 float pushDirection = hitLeftSide ? -1f : 1f;
                 float pushForce = 4f; // tune this value
 
+                // Bounce-back (still works perfectly)
                 rb.linearVelocity = new Vector2(pushDirection * pushForce, rb.linearVelocity.y);
-            }       
-        }   
-    }   
+            }
+        }
+    }
 }
