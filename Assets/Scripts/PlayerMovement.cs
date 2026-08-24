@@ -16,22 +16,25 @@ public class PlayerMovement : MonoBehaviour
     private bool isTouchingWall;
     private bool isFacingRight = true;
 
+    // Ice
+    public bool onIce = false;
+    public float iceFriction = 0.5f;   // how fast you slow down
+    public float iceAcceleration = 12f;
+    private bool justLandedOnIce = false;
+
+
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
     void Update()
     {
-        // Horizontal input
         horizontal = Input.GetAxisRaw("Horizontal");
 
-        // Charge jump logic
         HandleChargeJump();
-
-        // Flip sprite
         Flip();
 
-        // Wall detection (NO physics here)
+        // Wall detection
         isTouchingWall =
             Physics2D.Raycast(transform.position, Vector2.right, wallCheckDistance, groundLayer) ||
             Physics2D.Raycast(transform.position, Vector2.left, wallCheckDistance, groundLayer);
@@ -39,14 +42,32 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // Normal movement only when grounded and not charging
-        if (!isCharging && IsGrounded())
+        float targetSpeed = horizontal * speed;
+
+        if (!isCharging)
         {
-            rb.linearVelocity = new Vector2(horizontal * speed, rb.linearVelocity.y);
+            if (onIce)
+            {
+                // accelerate based on input
+                float vx = rb.linearVelocity.x + horizontal * iceAcceleration * Time.fixedDeltaTime;
+
+                // apply friction toward 0 when no input or changing direction
+                vx = Mathf.MoveTowards(vx, 0f, iceFriction * Time.fixedDeltaTime);
+
+                rb.linearVelocity = new Vector2(vx, rb.linearVelocity.y);
+            }
+            else
+            {
+                // normal ground movement
+                if (IsGrounded())
+                {
+                    rb.linearVelocity = new Vector2(targetSpeed, rb.linearVelocity.y);
+                }
+            }
         }
 
-        
-        if (isTouchingWall && Mathf.Abs(rb.linearVelocity.x) > 0)
+        // wall-stick only when NOT on ice
+        if (!onIce && isTouchingWall && Mathf.Abs(rb.linearVelocity.x) > 0)
         {
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         }
@@ -54,24 +75,21 @@ public class PlayerMovement : MonoBehaviour
 
     private void HandleChargeJump()
     {
-        
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             isCharging = true;
             currentCharge = minJumpPower;
 
-            
+            // Freeze horizontal movement
             rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
         }
 
-        
         if (Input.GetKey(KeyCode.Space) && isCharging)
         {
             currentCharge += chargeRate * Time.deltaTime;
             currentCharge = Mathf.Clamp(currentCharge, minJumpPower, maxJumpPower);
         }
 
-        // Release jump
         if (Input.GetKeyUp(KeyCode.Space) && isCharging)
         {
             isCharging = false;
@@ -99,6 +117,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // ⭐ ICE DETECTION
+        onIce = collision.collider.CompareTag("Ice");
+
+        // ⭐ Bounce-back
         foreach (ContactPoint2D contact in collision.contacts)
         {
             bool hitLeftSide = contact.point.x <= collision.collider.bounds.min.x + 0.05f;
@@ -107,11 +129,20 @@ public class PlayerMovement : MonoBehaviour
             if (hitLeftSide || hitRightSide)
             {
                 float pushDirection = hitLeftSide ? -1f : 1f;
-                float pushForce = 4f; // tune this value
+                float pushForce = 4f;
 
-                // Bounce-back (still works perfectly)
                 rb.linearVelocity = new Vector2(pushDirection * pushForce, rb.linearVelocity.y);
             }
+        }
+
+        if (collision.collider.CompareTag("Ice"))
+        {
+            onIce = true;
+            justLandedOnIce = true;   // ⭐ prevents friction on first frame
+        }
+        else
+        {
+            onIce = false;
         }
     }
 }
