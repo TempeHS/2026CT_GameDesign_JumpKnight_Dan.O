@@ -1,0 +1,243 @@
+fileFormatVersion: 2
+guid: ab373afbc8300a14683a4476128ad6af
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8879163875993973363
+    second: PC _ Computer - Jump King - Main Characters - The Knight & New Babe_0
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: 0.025
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PC _ Computer - Jump King - Main Characters - The Knight & New Babe_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 0
+        width: 368
+        height: 519
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline:
+      - - {x: -139, y: 219.5}
+        - {x: -106, y: 219.5}
+        - {x: -107, y: 250.5}
+        - {x: -139, y: 251.5}
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 372f91b5080293b70800000000000000
+      internalID: 8879163875993973363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline:
+    - - {x: 189, y: 259.5}
+      - {x: -189, y: 259.5}
+      - {x: -189, y: -259.5}
+      - {x: 189, y: -259.5}
+    - - {x: -138, y: 218.5}
+      - {x: -107, y: 218.5}
+      - {x: -107, y: 251.5}
+      - {x: -138, y: 251.5}
+    - - {x: -107, y: 220.5}
+      - {x: -74, y: 220.5}
+      - {x: -74, y: 250.5}
+      - {x: -107, y: 250.5}
+    - - {x: -75, y: 219.5}
+      - {x: -43, y: 219.5}
+      - {x: -44, y: 252.5}
+      - {x: -74, y: 252.5}
+    - - {x: -43, y: 220.5}
+      - {x: -11, y: 219.5}
+      - {x: -11, y: 251.5}
+      - {x: -43, y: 251.5}
+    - - {x: -11, y: 219.5}
+      - {x: 21, y: 219.5}
+      - {x: 20, y: 251.5}
+      - {x: -11, y: 251.5}
+    - - {x: 53, y: 219.5}
+      - {x: 85, y: 219.5}
+      - {x: 85, y: 251.5}
+      - {x: 54, y: 251.5}
+    - - {x: 21, y: 219.5}
+      - {x: 22, y: 219.5}
+      - {x: 22, y: 219.5}
+      - {x: 21, y: 219.5}
+    - - {x: 21, y: 219.5}
+      - {x: 53, y: 219.5}
+      - {x: 53, y: 251.5}
+      - {x: 21, y: 251.5}
+    - - {x: 117, y: 219.5}
+      - {x: 149, y: 219.5}
+      - {x: 149, y: 251.5}
+      - {x: 117, y: 251.5}
+    - - {x: 85, y: 219.5}
+      - {x: 117, y: 220.5}
+      - {x: 116, y: 251.5}
+      - {x: 85, y: 251.5}
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 985568b95619c3f48affa08b7b12b730
+    internalID: -81821521
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      PC _ Computer - Jump King - Main Characters - The Knight & New Babe_0: 8879163875993973363
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
