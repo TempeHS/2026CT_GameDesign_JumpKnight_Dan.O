@@ -2,13 +2,13 @@
 
 | Field | Detail |
 |---|---|
-| **Game Title** | |
-| **Student Name(s)** | |
-| **Class / Course** | |
-| **Repository** | |
-| **Unity Version** | |
-| **Document Version** | |
-| **Date** | |
+| **Game Title** |Castle Jumper |
+| **Student Name(s)** |D.O|
+| **Class / Course** |10CT1 |
+| **Repository** |2026CT_GameDesign_JumpKnight_Dan.O |
+| **Unity Version** | 6000.0.58f1|
+| **Document Version** |0.10 |
+| **Date** |27/08/2026 |
 
 ---
 
@@ -31,13 +31,13 @@
 ## 1. Game Overview
 
 ### 1.1 Genre
-
+Platfrom-adventure/foddian game
 
 ### 1.2 Target Audience
-
+Gamer of all ages 
 
 ### 1.3 Game Summary
-
+Castle jumper is a platfrom adventure game with elements of the foddian game. The player must traverse a castle playingthrough differnt level each with their own unique design and theme. As the player traverse up the castle they must attempt difficult jump and obstacals such as wide jumps and ice levels and if the player misses these jumps they 
 
 ### 1.4 Win / Loss Conditions
 | Condition | Description |
