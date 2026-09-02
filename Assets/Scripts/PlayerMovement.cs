@@ -5,7 +5,7 @@ public class PlayerMovement : MonoBehaviour
     private float horizontal;
     private float speed = 6f;
 
-    // Jump King charge jump values
+   
     private float minJumpPower = 5f;
     private float maxJumpPower = 22f;
     private float chargeRate = 20f;
@@ -117,10 +117,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // ⭐ ICE DETECTION
+        
         onIce = collision.collider.CompareTag("Ice");
 
-        // ⭐ Bounce-back
+        
         foreach (ContactPoint2D contact in collision.contacts)
         {
             bool hitLeftSide = contact.point.x <= collision.collider.bounds.min.x + 0.05f;
@@ -138,7 +138,7 @@ public class PlayerMovement : MonoBehaviour
         if (collision.collider.CompareTag("Ice"))
         {
             onIce = true;
-            justLandedOnIce = true;   // ⭐ prevents friction on first frame
+            justLandedOnIce = true;   
         }
         else
         {

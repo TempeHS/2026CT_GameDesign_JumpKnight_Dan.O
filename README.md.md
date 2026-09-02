@@ -37,13 +37,13 @@ Platfrom-adventure/foddian game
 Gamer of all ages 
 
 ### 1.3 Game Summary
-Castle jumper is a platfrom adventure game with elements of the foddian game. The player must traverse a castle playingthrough differnt level each with their own unique design and theme. As the player traverse up the castle they must attempt difficult jump and obstacals such as wide jumps and ice levels and if the player misses these jumps they 
+Castle jumper is a platfrom adventure game with elements of the foddian game. The player must traverse a castle playingthrough differnt level each with their own unique design and theme. As the player traverse up the castle they must attempt difficult jump and obstacals such as wide jumps and ice levels and if the player misses these jumps they will fall to the start of the level
 
 ### 1.4 Win / Loss Conditions
 | Condition | Description |
 |---|---|
-| Win | |
-| Loss | |
+| Win | Find the princess at the top |
+| Loss | Fall down to the start of a level, fall to the start of the game, fall off the map|
 
 ### 1.5 Platform & Build Settings
 | Setting | Detail |
@@ -89,11 +89,37 @@ Castle jumper is a platfrom adventure game with elements of the foddian game. Th
 ### 3.1 Core Mechanics
 | ID | Mechanic | Description | Implemented In (Script/Object) |
 |---|---|---|---|
-| M-1 | | | |
-| M-2 | | | |
-| M-3 | | | |
-| M-4 | | | |
-| M-5 | | | |
+| M-1 | Charge Jump| Castle jumpers gameplay is based of a charged jump, the player holds the jump button for up to 5 seconds for maximum height. When the player releases the jump button they are then propelled upwards or sideway depedning on their prevoise input. The player can also jump in almost any direction becuase the jump is based of momentum. | The jump is implemented in the player's movement script and mechanics  
+private void   HandleChargeJump()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
+        {
+            isCharging = true;
+            currentCharge = minJumpPower;
+
+            // Freeze horizontal movement
+            rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+        }
+
+        if (Input.GetKey(KeyCode.Space) && isCharging)
+        {
+            currentCharge += chargeRate * Time.deltaTime;
+            currentCharge = Mathf.Clamp(currentCharge, minJumpPower, maxJumpPower);
+        }
+
+        if (Input.GetKeyUp(KeyCode.Space) && isCharging)
+        {
+            isCharging = false;
+
+            // Apply jump force
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, currentCharge);
+        }
+    }|
+
+| M-2 | Boune back |  The Bounce back mechanic is pivitol on deciding how the player will interact with the levels and is a pivitol deciding factor that the player has to thnk about when planning thier jumps from platforms to platforms. Bounce back is also used to traverse levels with bounce back being needed to get paster obstacals and progress. he bounceback is a punishment tool for players who eaither over or underestimate thier jump. When a player has jumped and hits a wall or platfrom and do not make it to the next platfrom they will be bounced back with around a quater of the momentum that they released with this wil send them back either down levels or back onto a platforom  | The bounceback mechanic is implemented into the players movement script: PlayerMovement.cs |
+| M-3 | Air movement | | |
+| M-4 | Fall punishment| | |
+| M-5 | Ice levels| | |
 
 ### 3.2 Player Controls
 | Action | Input (Keyboard / Controller) | Description |
