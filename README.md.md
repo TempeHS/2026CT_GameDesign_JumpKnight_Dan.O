@@ -34,7 +34,7 @@
 Platfrom-adventure/foddian game
 
 ### 1.2 Target Audience
-Gamer of all ages 
+People who have alot of free time and enjoy punishing gameplay. 
 
 ### 1.3 Game Summary
 Castle jumper is a platfrom adventure game with elements of the foddian game. The player must traverse a castle playingthrough differnt level each with their own unique design and theme. As the player traverse up the castle they must attempt difficult jump and obstacals such as wide jumps and ice levels and if the player misses these jumps they will fall to the start of the level
@@ -89,59 +89,39 @@ Castle jumper is a platfrom adventure game with elements of the foddian game. Th
 ### 3.1 Core Mechanics
 | ID | Mechanic | Description | Implemented In (Script/Object) |
 |---|---|---|---|
-| M-1 | Charge Jump| Castle jumpers gameplay is based of a charged jump, the player holds the jump button for up to 5 seconds for maximum height. When the player releases the jump button they are then propelled upwards or sideway depedning on their prevoise input. The player can also jump in almost any direction becuase the jump is based of momentum. | The jump is implemented in the player's movement script and mechanics  
-private void   HandleChargeJump()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
-        {
-            isCharging = true;
-            currentCharge = minJumpPower;
-
-            // Freeze horizontal movement
-            rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
-        }
-
-        if (Input.GetKey(KeyCode.Space) && isCharging)
-        {
-            currentCharge += chargeRate * Time.deltaTime;
-            currentCharge = Mathf.Clamp(currentCharge, minJumpPower, maxJumpPower);
-        }
-
-        if (Input.GetKeyUp(KeyCode.Space) && isCharging)
-        {
-            isCharging = false;
-
-            // Apply jump force
-            rb.linearVelocity = new Vector2(rb.linearVelocity.x, currentCharge);
-        }
-    }|
+| M-1 | Charge Jump| Castle jumpers gameplay is based of a charged jump, the player holds the jump button for up to 5 seconds for maximum height. When the player releases the jump button they are then propelled upwards or sideway depedning on their prevoise input. The player can also jump in almost any direction becuase the jump is based of momentum. | The jump is implemented in the player's movement script and mechanics : PlayerMovement.cs|
 
 | M-2 | Boune back |  The Bounce back mechanic is pivitol on deciding how the player will interact with the levels and is a pivitol deciding factor that the player has to thnk about when planning thier jumps from platforms to platforms. Bounce back is also used to traverse levels with bounce back being needed to get paster obstacals and progress. he bounceback is a punishment tool for players who eaither over or underestimate thier jump. When a player has jumped and hits a wall or platfrom and do not make it to the next platfrom they will be bounced back with around a quater of the momentum that they released with this wil send them back either down levels or back onto a platforom  | The bounceback mechanic is implemented into the players movement script: PlayerMovement.cs |
-| M-3 | Air movement | | |
-| M-4 | Fall punishment| | |
-| M-5 | Ice levels| | |
+
+| M-3 | Air movement | The core mechanics of castle jumpers is a platformer game, most games allow the player to move in the air when jumping, castle jumpers does not allow the player to control their movement when in air aswell as when launching off a jump. The lack of airmovement is the one of core gameplaymechanics that players need to grasp when playing. When the player holds the jump button then relases it and  is then launched in the air the player has no control while in the air and must estimate where they will end up. the player will also have some controle of momentum but the player can aim their jump and the byproduct of this is the player also must account for momentum when proceddding with jumps. |This air movement mechanic is located in  PlayerMovement.cs |
+
+| M-4 | Fall punishment| Castle jumpers is designed to be a punishing game that forces the player to keep trying and perfect their jumps so they can continue making progress,  that is the way players learn and progress through the game but castle jumpers must have a punishment when failing  these jumps. The punishment of when a player fails a jump or overestimated how far they will reach and goes over the platfrom, the player fill fall until they can hit a new platform or until the player hits the bottom their are no checkpoints in the current game but if I were to implement one it would be a log platform that would cover move of the level, but I dont this I would do this.| SPIKE OBJECT |
+
+| M-5 | Ice levels| Levels in castle jumpers vary between two differnt types of platforms the first on is normal levels and the second one is ice level, the normal platfroms act as a default platfrom as when the player land on them they have little to no momentum. This is differnt when the player lands on the ice platforms, the players momentum will carry over causing the player to keep moving one they have landed on the platfrom this causes the player to constanly provide an opposite movement force so the player does not fall off as well as making it harder to plan jumps and wall bounces. | My ice levels are in my movement script: PlayerMovement Script.cs|
 
 ### 3.2 Player Controls
 | Action | Input (Keyboard / Controller) | Description |
 |---|---|---|
-| | | |
-| | | |
+| Jump| (Space / X) | Allows the player to launch in the air as well as charge jumps that go up to a certain height as well as provides momentum to the player once t he player hits or holds this button|
+|Walk | (A / D) (Joystick left / Joystick right)| Moves the player in either a left or right direction provides the player with momentum when charging jumps as well as percision when aiming jumps.|
 | | | |
 | | | |
 
 ### 3.3 Physics & Collision
 | Feature | Description |
 |---|---|
-| | |
-| | |
-| | |
+| Ground Check | the players ground check using a little circle underneath the player called ground check and then casting a tiny circular detection area around that point.constantly check weather the player is sitting on solid ground. Unity checks whether this circle overlaps any collider on the designated ground layer. If it does, the player is considered grounded and if not the player is airborne.  |
+
+| Bounce Back| The bounceback collion in my game is a system that bounces my player back a few units when hitting a wall and colliding with speed it works by detecting a side collision usually through contact points or raycasts and then instantly applying a horizontal velocity in the opposite direction, when the player hits a wall on the left the player is bounced back to the right, and when the player hits a wall on the right the player is bouned back to the left this physics also applies to the on the Y or Z when the player hits the top of the platform they are bounced back under. It works by detecting a side collision usually through contact points or raycast|
+
+| Wall detection| Wall detection is part of my movement code that detects weather the player is collding with a wall it controls mechanics like the bounceback, wall sticking and prevents sliding, this works by firing two short raycasts one to the left and one to the right from the players position. If either raycast hits a collider on the ground layer, the script knows the player is touching a wall. Once a wall is detected the movement script reacts by stopping horizontal velocity, applying bounceback and preventing the player from sliding into corners because the raycasts are short and directional they only detect walls directly beside the player|
 
 ### 3.4 Game Loop
 | Stage | Description |
 |---|---|
-| Start / Initialisation | |
-| Core Loop | |
-| Win / End State | |
+| Start / Initialisation | The game begins in a menu with the the title screen, the name of the game: Castle Jumpers and two buttons one with start an one that says quit, if the plater hits start gmae. The game will start with the player being surronded by 2 big platforms the that the player must jump out of the, this acts as the toturial.|
+| Core Loop | Thee play attemps jumps from different platfroms including diferent levels like ice levels, the player then will either make it to the princess or fall to the bottom and keep trying. |
+| Win / End State | The player gets past the ice levels and see's the "princess" when the player touches them the player will die and be respawned at the start of the game. you know this is a metaphor for chasing women and how it can destroy you and eveything youve worked for. |
 | Restart | |
 
 ### 3.5 Scoring & Progression
