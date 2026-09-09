@@ -120,16 +120,20 @@ Castle jumper is a platfrom adventure game with elements of the foddian game. Th
 | Stage | Description |
 |---|---|
 | Start / Initialisation | The game begins in a menu with the the title screen, the name of the game: Castle Jumpers and two buttons one with start an one that says quit, if the plater hits start gmae. The game will start with the player being surronded by 2 big platforms the that the player must jump out of the, this acts as the toturial.|
+
 | Core Loop | Thee play attemps jumps from different platfroms including diferent levels like ice levels, the player then will either make it to the princess or fall to the bottom and keep trying. |
+
 | Win / End State | The player gets past the ice levels and see's the "princess" when the player touches them the player will die and be respawned at the start of the game. you know this is a metaphor for chasing women and how it can destroy you and eveything youve worked for. |
-| Restart | |
+
+| Restart | If the player makes a mistake and falls onto spikes the player will be deleted and then respawn back and the bottom or the start of the game |
 
 ### 3.5 Scoring & Progression
 | Element | Description |
 |---|---|
-| Scoring System | |
-| Difficulty Progression | |
-| Unlockables / Levels | |
+| Scoring System | If the player reaches the end and reaches the princess, they will win but they will also be brought back to the start of the game. This is a metaphor... |
+| Difficulty Progression | As the player progresses in castle jumpers they will encoutner increasly harder level layout and jumps with the player being froced to think how they will approch each level and jump, this is becuase as the player progress high their risk of falling will be greater and the amount of time invested can be wasted as well as the game then transitioning to ice platfroms  |
+
+| Unlockables / Levels | When the player gets high enough the game will progress to ice platfroms which increases the diffuculty for the player, causing the player to be extra careful when transitioning into this level. As well as an increase in punishment if the player falls, if they fall their is a chance they could fall all the way to the bottom. |
 
 ---
 
@@ -152,7 +156,7 @@ Castle jumper is a platfrom adventure game with elements of the foddian game. Th
 
 | Cut Scene | Trigger | Description | Screenshot / Still |
 |---|---|---|---|
-| | | | |
+| Menu to Game|When Start buttom is triggered | When the player loads into the game and hits the "Play" buttom they will be brought to the game |![Menu](Screenshot%202026-09-09%20093751.png) |
 | | | | |
 | | | | |
 
@@ -164,7 +168,7 @@ Castle jumper is a platfrom adventure game with elements of the foddian game. Th
 
 | Animation | Object / Character | Description | Screenshot |
 |---|---|---|---|
-| | | | |
+| Walking animation| Player| When the player inputs either left or right the animation will switch left or right and player the walking animation |![Walking](Screenshot%202026-09-09%20095247.png) |
 | | | | |
 | | | | |
 
@@ -188,9 +192,9 @@ Castle jumper is a platfrom adventure game with elements of the foddian game. Th
 
 | Shader / Material | Applied To | Description | Screenshot |
 |---|---|---|---|
-| | | | |
-| | | | |
-| | | | |
+|Background | Background | A dungeon style brick sprite| ![Background](.\Documents\GitHub\2026CT_MyGame_Dan.O\BrickBackground.png) or ![Background](BrickBackground.png) |
+| Defualt Platforms| Platforms| A platforms the player traveses and uses to progress|![Defualt Platform](Screenshot%202026-09-09%20100707.png) |
+| Ice platforms| Slippery Platforms|A platform that acts as an obstacal the player navigate to progress |![Ice Platform](Screenshot%202026-09-09%20100859.png) |
 
 > Add screenshot images using: `![Shader Name](./docs/screenshots/shader_name.png)`
 
@@ -205,9 +209,9 @@ Castle jumper is a platfrom adventure game with elements of the foddian game. Th
 
 | Description | Screenshot |
 |---|---|
-| | |
-| | |
-| | |
+| An assest that is a pentagram |![Pentagram](Pentagram.png) |
+| An assest that is a blue pentagram| ![Blue Pentagram](Pentagram_Activated.png) |
+| An assest that is a grave| ![Grave](Gravestone.png) |
 
 ---
 
@@ -241,18 +245,18 @@ Castle jumper is a platfrom adventure game with elements of the foddian game. Th
 ### 6.1 HUD Elements
 | Element | Purpose | Screenshot |
 |---|---|---|
-| | | |
-| | | |
-| | | |
+| Start button| To enter the player into the game |![Start button](Screenshot%202026-09-09%20101455.png) |
+| Title| To intoduce the player to the game| ![Title](Screenshot%202026-09-09%20101624.png) |
+|Quite button |To exit the player out of the game |![Quit](Screenshot%202026-09-09%20101513.png) |
 
 > Add screenshot images using: `![HUD Element](./docs/screenshots/hud_name.png)`
 
 ### 6.2 Menus
 | Menu | Purpose | Screenshot |
 |---|---|---|
-| Main Menu | | |
+| Main Menu | Shows the player the title of the game and allows them to either quit or enter the game | ![Menu](Screenshot%202026-09-09%20093751.png)|
 | Pause Menu | | |
-| Game Over Screen | | |
+| Game Over Screen | When the player dies they are brought back to the start of the game |![You lost all your progress](Screenshot%202026-09-09%20102155.png) |
 | | | |
 
 > Add screenshot images using: `![Menu Name](./docs/screenshots/menu_name.png)`
@@ -264,15 +268,15 @@ Castle jumper is a platfrom adventure game with elements of the foddian game. Th
 ### 7.1 Scene List
 | Scene Name | Purpose | Description |
 |---|---|---|
-| | | |
-| | | |
+| Main menu | Shows the player the title of the game and allows them to either quit or enter the game| This screen shows the how the player will enter the game it shows the title screen, a start or play button and a quite button. The title is to tell the player the name of the game, the play button transports the player into the main game that the player will try to complete and the quite button will close the game so the player can exit the game.|
+| Game | The gameplay loop that the play will spend time in| This is where the player will spend of the their time and where the main gameplay loop will take place. In this scene the player must travers obstacals like ice levels and preform jumps off platforms to make it to the end which is the princess, when the player touches the princess they die. This is a metaphor... for the duality of chasing women. ong ong if you know you know |
 | | | |
 | | | |
 
 ### 7.2 Level / Environment Screenshots
 | Level / Area | Description | Screenshot |
 |---|---|---|
-| | | |
+| tutorial ("First jump")| This first level is where the player will be introduced to the game and learn the main mechanic. The player must jump out of a divot of two bigger platforms to progress the game. This is to teach to main mechanics the player must master in order to progress|  |
 | | | |
 | | | |
 
