@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    [SerializeField] private Animator anim;
     private float horizontal;
     private float speed = 6f;
 
@@ -11,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private float chargeRate = 20f;
     private float currentCharge = 0f;
     private bool isCharging = false;
+
 
     public float wallCheckDistance = 0.1f;
     private bool isTouchingWall;
@@ -27,6 +29,12 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Transform groundCheck;
     [SerializeField] private LayerMask groundLayer;
 
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
+
     void Update()
     {
         horizontal = Input.GetAxisRaw("Horizontal");
@@ -38,6 +46,11 @@ public class PlayerMovement : MonoBehaviour
         isTouchingWall =
             Physics2D.Raycast(transform.position, Vector2.right, wallCheckDistance, groundLayer) ||
             Physics2D.Raycast(transform.position, Vector2.left, wallCheckDistance, groundLayer);
+
+        if (IsGrounded() && rb.linearVelocity.y <= 0 && !isCharging)
+        {
+            anim.SetBool("isJumping", false);
+        }
     }
 
     private void FixedUpdate()
@@ -60,15 +73,13 @@ public class PlayerMovement : MonoBehaviour
             {
                 // normal ground movement
                 if (IsGrounded())
-                {
-                    rb.linearVelocity = new Vector2(targetSpeed, rb.linearVelocity.y);
-                }
+                    {
+                        rb.linearVelocity = new Vector2(targetSpeed, rb.linearVelocity.y);
+                    }
             }
         }
 
-        // wall-stick only when NOT on ice
-        if (!onIce && isTouchingWall && Mathf.Abs(rb.linearVelocity.x) > 0)
-        {
+        if (!onIce && isTouchingWall && Mathf.Abs(rb.linearVelocity.x) > 0) {
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y);
         }
     }
@@ -78,10 +89,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && IsGrounded())
         {
             isCharging = true;
+            anim.SetBool("isCharging", true);
             currentCharge = minJumpPower;
 
             // Freeze horizontal movement
             rb.linearVelocity = new Vector2(0f, rb.linearVelocity.y);
+            
         }
 
         if (Input.GetKey(KeyCode.Space) && isCharging)
@@ -96,6 +109,8 @@ public class PlayerMovement : MonoBehaviour
 
             // Apply jump force
             rb.linearVelocity = new Vector2(rb.linearVelocity.x, currentCharge);
+
+            anim.SetBool("isJumping", true);
         }
     }
 
