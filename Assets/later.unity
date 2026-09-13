@@ -996,7 +996,7 @@ Transform:
   m_GameObject: {fileID: 401025888}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.26, y: 11.55, z: 0}
+  m_LocalPosition: {x: -3.46, y: -1.57, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 3.560183}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1088,6 +1088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c95a3fc1c4bbe41963666c7bddbefa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   wallCheckDistance: 0.1
   onIce: 0
   iceFriction: 0
@@ -6115,9 +6116,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 401025892}
-  screenHeight: 8
-  snapSpeed: 8
-  snapBuffer: 1
+  screenHeight: 6
+  snapSpeed: 0.15
+  snapBuffer: 2
 --- !u!1 &1904715403
 GameObject:
   m_ObjectHideFlags: 0
@@ -6584,6 +6585,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03c95a3fc1c4bbe41963666c7bddbefa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   wallCheckDistance: 0.1
   onIce: 0
   iceFriction: 0
@@ -6675,7 +6677,7 @@ Transform:
   m_GameObject: {fileID: 2051359214}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.49, y: 3.06, z: 0}
+  m_LocalPosition: {x: 0.9, y: -1.79, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 3.560183}
   m_ConstrainProportionsScale: 0
   m_Children:

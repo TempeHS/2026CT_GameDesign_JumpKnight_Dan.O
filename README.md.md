@@ -276,9 +276,10 @@ Castle jumper is a platfrom adventure game with elements of the foddian game. Th
 ### 7.2 Level / Environment Screenshots
 | Level / Area | Description | Screenshot |
 |---|---|---|
-| tutorial ("First jump")| This first level is where the player will be introduced to the game and learn the main mechanic. The player must jump out of a divot of two bigger platforms to progress the game. This is to teach to main mechanics the player must master in order to progress|  |
-| | | |
-| | | |
+| Tutorial ("First jump")| This first level is where the player will be introduced to the game and learn the main mechanic. The player must jump out of a divot of two bigger platforms to progress the game. This is to teach to main mechanics the player must master in order to progress|  |
+
+|Level 1 ("Default platform") | This level is the first obstacl the player must over come, these level starts with simple mechances to teach the player the basic movement mechanics such as moving and jumping reinforcing what they learnt in the toturial |![Level 1](Screenshot%202026-09-10%20112055.png) |
+| Level 2 ("Ice level")| This part of the game is noticibly harder for the player to preform jumps from platform to platform because of the way the ice platform behave, when the player jumps from a default platfrom to an ice platform their momentum is carried causing the palyer to rebalance them selves, the player also must preform difficult jumps while sliding around. | |
 
 > Add screenshot images using: `![Level Name](./docs/screenshots/level_name.png)`
 
